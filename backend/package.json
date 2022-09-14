@@ -1,0 +1,21 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "esbuild --bundle --minify ./src/main.js > main.js",
+    "dev": "npx miniflare main.js --watch --debug --kv-persist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cookie": "0.5.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.15.7",
+    "miniflare": "2.8.2"
+  }
+}

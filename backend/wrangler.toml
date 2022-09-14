@@ -1,0 +1,16 @@
+account_id = "c99779f598d17f254bc96f9e7e2f7e88"
+workers_dev = true
+main = "./src/main.js"
+compatibility_date = "2022-09-14"
+
+name = "astro-ssr-trial"
+vars = { ENV = "dev" }
+
+kv_namespaces = [
+  { binding = "SESSION", id = "be6bc22de0054e5faf81680410755ef1" }
+]
+
+# for miniflare
+[build]
+command = "npm run build"
+

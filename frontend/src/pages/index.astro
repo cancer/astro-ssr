@@ -1,0 +1,35 @@
+---
+import { parse, serialize } from "cookie";
+import Layout from "../layouts/Layout.astro";
+import LoginButton from "../components/LoginButton.svelte";
+
+type User = {
+  name: string;
+};
+
+const sid = parse(Astro.request.headers.get("cookie") ?? "")["astro-ssr"];
+
+let user: User | null = null;
+
+if (sid === undefined) {
+  user = null;
+} else {
+  try {
+    const res = await fetch("http://localhost:3002/auth/", {
+      headers: {
+        "Content-Type": "application/json",
+        Cookie: serialize("astro-ssr", sid),
+      },
+    });
+    if (!res.ok) throw new Error(await res.text());
+    const json: { user: User } = await res.json();
+    user = json.user;
+  } catch {
+    user = null;
+  }
+}
+---
+
+<Layout title="Astro SSR tryal">
+  {user === null ? <LoginButton client:load /> : <p>Hello {user.name}</p>}
+</Layout>
