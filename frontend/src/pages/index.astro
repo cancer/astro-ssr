@@ -15,7 +15,7 @@ if (sid === undefined) {
   user = null;
 } else {
   try {
-    const res = await fetch("http://localhost:3002/auth/", {
+    const res = await fetch("https://astro-ssr-trial.cancer6.workers.dev/auth/", {
       headers: {
         "Content-Type": "application/json",
         Cookie: serialize("astro-ssr", sid),

@@ -1,7 +1,7 @@
 <script>
   let name;
   const login = async () => {
-    const res = await fetch(`http://localhost:3002/login/?name=${name}`, {
+    const res = await fetch(`https://astro-ssr-trial.cancer6.workers.dev/login/?name=${name}`, {
       mode: "cors",
       credentials: "include"
     });
